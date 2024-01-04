@@ -12,19 +12,20 @@ const sendMail = async (body, file) => {
   const mailOptions = {
     from: `<${EMAIL}>`,
     to: TO,
-    subject: "Polygon Design Studio - Contact",
+    // subject: "Polygon Design Studio - Contact",
     html: body,
   };
   if (file)
     mailOptions.attachments = [
       {
-        subject: "Polygon Design Studio - Careers",
         filename: file.originalname,
         content: file.buffer,
       },
     ];
   try {
-    const info = await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(
+      file ? { ...mailOptions, subject: 'Polygon Design Studio - Careers' } 
+      : { ...mailOptions, subject: 'Polygon Design Studio - Contact' });
     console.log("Message sent: " + info.response);
     return "Message sent";
   } catch (error) {
