@@ -12,7 +12,38 @@ const createContact = async (req, res) => {
       message,
     });
 
-    const body = `<!DOCTYPE html><html><head> <meta charset="utf-8"> <title>Contact Form</title></head><body> <table> <tr> <td><strong>Name:</strong></td> <td>${name}</td> </tr> <tr> <td><strong>Email:</strong></td> <td>${email}</td> </tr> <tr> <td><strong>Phone:</strong></td> <td>${phone}</td> </tr> <tr> <td><strong>Message:</strong></td> <td>${message}</td> </tr> </table></body></html>`;
+    const body = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Contact Form</title>
+        </head>
+
+        <body>
+            <table>
+                
+                <tr>
+                    <td><strong>Name:</strong></td>
+                    <td>${name}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>${email}</td>
+                </tr>
+                <tr>
+                    <td><strong>Phone:</strong></td>
+                    <td>${phone}</td>
+                </tr>
+                <tr>
+                    <td><strong>Message:</strong></td>
+                    <td>${message}</td>
+                </tr>
+            </table>
+        </body>
+        </html>
+        `
+  ;
     await sendMail(body);
 
     return res.status(200).json({

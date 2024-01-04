@@ -12,12 +12,13 @@ const sendMail = async (body, file) => {
   const mailOptions = {
     from: `<${EMAIL}>`,
     to: TO,
-    subject: "Polygon Design Studio",
+    subject: "Polygon Design Studio - Contact",
     html: body,
   };
   if (file)
     mailOptions.attachments = [
       {
+        subject: "Polygon Design Studio - Careers",
         filename: file.originalname,
         content: file.buffer,
       },
